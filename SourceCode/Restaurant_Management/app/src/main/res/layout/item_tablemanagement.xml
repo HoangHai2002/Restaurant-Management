@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_white_10dp"
+    android:layout_marginBottom="10dp"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="10dp">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[          Dang dung ]"
+        android:textColor="#BF860C"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/menu"
+        app:layout_constraintBottom_toBottomOf="@id/menu"/>
+
+    <TextView
+        android:id="@+id/iconStatus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/circular_orange"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/menu" />
+
+    <TextView
+        android:id="@+id/tvTableAreaName"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Khu A"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/menu"
+        app:layout_constraintEnd_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@id/menu" />
+    <TextView
+        android:id="@+id/tvTableName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ban 01"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/menu"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@id/menu" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="    -    "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/menu"
+        app:layout_constraintEnd_toStartOf="@+id/tvTableAreaName"
+        app:layout_constraintTop_toTopOf="@id/menu" />
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:src="@drawable/icon_menu3cham"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

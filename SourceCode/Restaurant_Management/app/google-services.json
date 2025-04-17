@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "63454299606",
+    "project_id": "restaurant-management-f86e8",
+    "storage_bucket": "restaurant-management-f86e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63454299606:android:5e48764ede59bf6237d077",
+        "android_client_info": {
+          "package_name": "com.example.restaurant_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwFoZH1vR_B1yRSUVfJmKLBIgf4ueMZN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

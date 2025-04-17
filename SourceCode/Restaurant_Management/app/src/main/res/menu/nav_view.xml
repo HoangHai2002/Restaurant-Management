@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/reload"
+        android:title="Reload"
+        android:icon="@drawable/icon_reload"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Thông tin cá nhân"
+        android:icon="@drawable/icon_user_white"/>
+    <item
+        android:id="@+id/qlUser"
+        android:title="Quản lý nhân viên"
+        android:icon="@drawable/icon_group_user"/>
+
+    <item
+        android:id="@+id/qlKhuVucBan"
+        android:title="Quản lý khu vực bàn"
+        android:icon="@drawable/icon_kvban"/>
+    <item
+        android:id="@+id/qlBan"
+        android:title="Quản lý bàn"
+        android:icon="@drawable/icon_ban"/>
+    <item
+        android:id="@+id/qlMonAn"
+        android:title="Quản lý món ăn"
+        android:icon="@drawable/icon_monan"/>
+    <item
+        android:id="@+id/qlLoaiMonAn"
+        android:title="Quản lý loại món"
+        android:icon="@drawable/icon_loaimonan"/>
+    <item
+        android:id="@+id/qlDoanhThu"
+        android:title="Quản lý doanh thu"
+        android:icon="@drawable/icon_dollar"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Đăng xuất"
+        android:icon="@drawable/icon_logout"/>
+
+</menu>
