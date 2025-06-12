@@ -99,7 +99,8 @@ class LoginActivity : AppCompatActivity(), IUserView {
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
             if (data.id != null) {
-                preferences.saveLogin(data.id!!, data.role == 0)
+                var role = data.convertRoleToText(data.role!!)
+                preferences.saveLogin(data.id!!, data.role == 0, role)
             }
         }
     }

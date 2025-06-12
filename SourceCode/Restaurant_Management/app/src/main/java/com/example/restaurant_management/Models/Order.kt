@@ -4,11 +4,13 @@ import java.time.LocalDateTime
 
 data class Order(
     var id: String? = "",
-    var idBan: String? = "",
-    var idMonAn: String? = "",
-    var idUser: String? = "",
-    var soLuong: Int,
-    var thoiGian: LocalDateTime,
-    var trangThai: Boolean
+    var tableId: String? = "",
+    var tableName: String? = "",
+    var total: Double = 0.0,
+    var status: Boolean = true,
+    var note: String? = "",
+    var guest: Int = 0,
+    var createAt: String? = "",
+    var orderItem : MutableList<OrderItem> = mutableListOf()
 ) {
 }

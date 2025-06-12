@@ -51,36 +51,24 @@ class AddUserActivity : AppCompatActivity(), IUserView {
             if(bind.edtFullname.text.toString() != "" &&
                 bind.edtUsername.text.toString() != "" &&
                 bind.edtPassword.text.toString() != ""){
-
                 val fullname = bind.edtFullname.text.toString()
                 val username = bind.edtUsername.text.toString()
                 val password = bind.edtPassword.text.toString()
-                val user = User("", fullname, username, password, role)
-                controller.add(user)
+                val confirmpassword = bind.edtConfirmPassword.text.toString()
+                val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}$").matches(password)
+                if (regex){
+                    if (password == confirmpassword){
+                        val user = User("", fullname, username, password, role)
+                        controller.add(user)
+                    }else{
+                        bind.edtConfirmPassword.error = "Mật khẩu không trùng khớp"
+                    }
+                }else{
+                    bind.edtPassword.error = "Mật khẩu không đúng định dạng"
+                }
             }
-
         }
     }
-
-//    override fun onDataLoaded(data: User?) {
-//    }
-//
-//    override fun onDataListLoaded(dataList: List<User>) {
-//    }
-//
-//    override fun onActionSuccess(message: String) {
-//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-//        finish()
-//    }
-//
-//    override fun onActionError(error: String) {
-//        when(error){
-//            "Tên người dùng đã tồn tại" -> bind.edtFullname.error = error
-//            "Tên đăng nhập đã tồn tại" -> bind.edtUsername.error = error
-//            else -> Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             android.R.id.home ->{
@@ -92,11 +80,9 @@ class AddUserActivity : AppCompatActivity(), IUserView {
     }
 
     override fun onUserDataLoaded(data: User?) {
-        TODO("Not yet implemented")
     }
 
     override fun onUserDataListLoaded(dataList: List<User>) {
-        TODO("Not yet implemented")
     }
 
     override fun onUserActionSuccess(message: String) {

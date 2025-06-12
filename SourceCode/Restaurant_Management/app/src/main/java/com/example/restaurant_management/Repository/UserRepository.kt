@@ -138,7 +138,7 @@ class UserRepository : BaseRepository<User> {
                                         callback.onSuccess(user)
                                         return
                                     } else{
-                                        callback.onFailure("Tài khoản của bạn đã vị vô hiệu hóa")
+                                        callback.onFailure("Tài khoản của bạn đã bị vô hiệu hóa")
                                         return
                                     }
 
@@ -159,7 +159,6 @@ class UserRepository : BaseRepository<User> {
 
     fun changeActive(id: String, isActive :Boolean, callback: BaseRepository.ActionCallback){
         val isActiveUpdate = mapOf<String, Any>("active" to !isActive)
-        Log.d("Status", isActiveUpdate.toString())
         userRef.child(id).updateChildren(isActiveUpdate).addOnSuccessListener {
             callback.onSuccess()
         }.addOnFailureListener {

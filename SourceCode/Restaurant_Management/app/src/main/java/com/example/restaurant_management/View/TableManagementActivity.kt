@@ -32,12 +32,13 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
     private lateinit var tableController: TableController
     private lateinit var tableAreaController: TableAreaController
     private lateinit var tableArea: TableArea
-//    private lateinit var listTableArea: MutableList<TableArea>
+
+    //    private lateinit var listTableArea: MutableList<TableArea>
     private lateinit var options: MutableList<TableArea>
-    private var updateTableAreaId : String? = ""
-    private lateinit var spinnerUpdate : Spinner
-    private lateinit var tableAreaOptions : MutableList<TableArea>
-    private lateinit var fullListTable : MutableList<Table>
+    private var updateTableAreaId: String? = ""
+    private lateinit var spinnerUpdate: Spinner
+    private lateinit var tableAreaOptions: MutableList<TableArea>
+    private lateinit var fullListTable: MutableList<Table>
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +85,8 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
         // Find Table
         tableAreaController.getAll()
         tableAreaOptions = mutableListOf(TableArea("0", "Tất cả"))
-        val arrayAdapterTableArea = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tableAreaOptions)
+        val arrayAdapterTableArea =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tableAreaOptions)
         bind.spinnerTableArea.adapter = arrayAdapterTableArea
         var tableAreaFind = TableArea("0", "Tất cả")
         bind.spinnerTableArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -97,10 +99,11 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
         }
 
         val statusOptions = mutableListOf("Tất cả", "Trống", "Đang dùng", "Đặt trước")
-        val arrayAdapterStatus = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, statusOptions)
+        val arrayAdapterStatus =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, statusOptions)
         bind.spinnerStatus.adapter = arrayAdapterStatus
         var statusFind = "Tất cả"
-        bind.spinnerStatus.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
+        bind.spinnerStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 statusFind = p0?.getItemAtPosition(p2).toString()
             }
@@ -116,60 +119,65 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun findTable(tableAreaFind : TableArea, statusFind : String){
-        when(statusFind){
-            "Tất cả" ->{
+    fun findTable(tableAreaFind: TableArea, statusFind: String) {
+        when (statusFind) {
+            "Tất cả" -> {
                 // Find By TableArea
-                if (tableAreaFind.id == "0"){
+                if (tableAreaFind.id == "0") {
                     listTable.clear()
                     listTable.addAll(fullListTable)
                     adapter.notifyDataSetChanged()
-                } else{
-                    val filterList = fullListTable.filter { it.tableAreaId == tableAreaFind.id }.toMutableList()
+                } else {
+                    val filterList =
+                        fullListTable.filter { it.tableAreaId == tableAreaFind.id }.toMutableList()
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
                 }
             }
-            "Trống" ->{
+
+            "Trống" -> {
                 // Find by status "Trống"
-                if (tableAreaFind.id == "0"){
+                if (tableAreaFind.id == "0") {
                     val filterList = fullListTable.filter { it.status == "Trống" }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
-                } else{
-                    val filterList = fullListTable.filter { it.status == "Trống" && it.tableAreaId == tableAreaFind.id }
+                } else {
+                    val filterList =
+                        fullListTable.filter { it.status == "Trống" && it.tableAreaId == tableAreaFind.id }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
                 }
             }
 
-            "Đang dùng" ->{
+            "Đang dùng" -> {
                 // Find by status "Trống"
-                if (tableAreaFind.id == "0"){
+                if (tableAreaFind.id == "0") {
                     val filterList = fullListTable.filter { it.status == "Đang dùng" }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
-                } else{
-                    val filterList = fullListTable.filter { it.status == "Đang dùng" && it.tableAreaId == tableAreaFind.id }
+                } else {
+                    val filterList =
+                        fullListTable.filter { it.status == "Đang dùng" && it.tableAreaId == tableAreaFind.id }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
                 }
             }
 
-            "Đặt trước" ->{
+            "Đặt trước" -> {
                 // Find by status "Trống"
-                if (tableAreaFind.id == "0"){
+                if (tableAreaFind.id == "0") {
                     val filterList = fullListTable.filter { it.status == "Đặt trước" }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
-                } else{
-                    val filterList = fullListTable.filter { it.status == "Đặt trước" && it.tableAreaId == tableAreaFind.id }
+                } else {
+                    val filterList =
+                        fullListTable.filter { it.status == "Đặt trước" && it.tableAreaId == tableAreaFind.id }
                     listTable.clear()
                     listTable.addAll(filterList)
                     adapter.notifyDataSetChanged()
@@ -179,22 +187,23 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
 
         }
     }
-    fun showDialogDelete(table: Table){
+
+    fun showDialogDelete(table: Table) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Xác nhận xóa")
-        if (table.status != "Trống"){
+        if (table.status != "Trống") {
             builder.setMessage("Không thể xóa bàn đang sử dụng")
-            builder.setNegativeButton("Hủy"){dialog, which -> dialog.dismiss()}
-        } else{
+            builder.setNegativeButton("Hủy") { dialog, which -> dialog.dismiss() }
+        } else {
             builder.setMessage("Bạn có chắc muốn xóa bàn này?")
-            builder.setPositiveButton("Xóa"){dialog, which -> tableController.delete(table.id!!)}
-            builder.setNegativeButton("Hủy"){dialog, which -> dialog.dismiss()}
+            builder.setPositiveButton("Xóa") { dialog, which -> tableController.delete(table.id!!) }
+            builder.setNegativeButton("Hủy") { dialog, which -> dialog.dismiss() }
         }
 
         builder.show()
     }
 
-    fun showDialogUpdate(table: Table){
+    fun showDialogUpdate(table: Table) {
         val builder = AlertDialog.Builder(this@TableManagementActivity)
         builder.setTitle("Chỉnh sửa thông tin")
         val tableName = EditText(this@TableManagementActivity)
@@ -202,7 +211,6 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
         spinnerUpdate = Spinner(this@TableManagementActivity)
 
         tableAreaController.getAll()
-//        listTableArea = mutableListOf()
         options = mutableListOf(TableArea("0", "Chon khu vực"))
 
         val arrayAdapter =
@@ -226,7 +234,7 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
         builder.setView(layout)
         builder.setPositiveButton("Xác nhận") { dialog, which ->
             val name = tableName.text.toString().trim()
-            if (tableArea.id == "0"){
+            if (tableArea.id == "0") {
                 Toast.makeText(this, "Vui lòng chọn khu vực", Toast.LENGTH_SHORT).show()
                 return@setPositiveButton
             }
@@ -241,7 +249,8 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
                     table.id,
                     tableArea.id,
                     tableArea.tableAreaName,
-                    tableName.text.toString()
+                    tableName.text.toString(),
+                    table.status
                 )
                 tableController.update(table.id!!, newTable)
             }
@@ -260,7 +269,6 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
         tableName.hint = "Nhập tên bàn"
         val spinner = Spinner(this)
         tableAreaController.getAll()
-//        listTableArea = mutableListOf()
         options = mutableListOf(TableArea("0", "Chon khu vực"))
 
         val arrayAdapter =
@@ -305,8 +313,6 @@ class TableManagementActivity : AppCompatActivity(), ITableView, ITableAreaView 
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onTableAreaDataListLoaded(dataList: List<TableArea>) {
-//        listTableArea.clear()
-//        listTableArea.addAll(dataList)
         options.addAll(dataList)
         tableAreaOptions.clear()
         tableAreaOptions.add(TableArea("0", "Tất cả"))

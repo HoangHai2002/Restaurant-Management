@@ -48,7 +48,7 @@ class UserManagementAdapter(private var listUser: MutableList<User>, val listene
                         true
                     }
 
-                    "Đổi trang thái" -> {
+                    "Đổi trạng thái" -> {
                         listener.onChangeIsActive(itemData, position)
                         true
                     }

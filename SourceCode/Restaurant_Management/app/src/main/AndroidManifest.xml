@@ -8,17 +8,56 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_app"
+        android:label="Restaurant Management"
+        android:roundIcon="@drawable/icon_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.Restaurant_Management"
         tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
-            android:name=".View.TableManagementActivity"
+            android:name=".View.HistoryOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".View.TableActivity"
+            android:name=".View.BillDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.PaymentHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.BillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.RevenueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.KitchenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TableActiveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.OrderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".View.DishCategoryManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.DishManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.TableManagementActivity"
             android:exported="false" />
         <activity
             android:name=".View.TableAreaManagementActivity"
@@ -39,10 +78,10 @@
             android:name=".View.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".View.IntroActivity"
+            android:name=".View.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".View.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

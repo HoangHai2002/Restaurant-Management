@@ -7,4 +7,7 @@ data class Table(
     var tableName: String? = "",
     var status: String? = "Trống"
 ) {
+    override fun toString(): String {
+        return tableName!!
+    }
 }

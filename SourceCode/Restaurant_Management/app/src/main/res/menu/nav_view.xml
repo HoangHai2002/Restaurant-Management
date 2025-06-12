@@ -37,6 +37,10 @@
         android:title="Quản lý doanh thu"
         android:icon="@drawable/icon_dollar"/>
     <item
+        android:id="@+id/qlBep"
+        android:title="Quản lý bếp"
+        android:icon="@drawable/icon_chef"/>
+    <item
         android:id="@+id/logout"
         android:title="Đăng xuất"
         android:icon="@drawable/icon_logout"/>

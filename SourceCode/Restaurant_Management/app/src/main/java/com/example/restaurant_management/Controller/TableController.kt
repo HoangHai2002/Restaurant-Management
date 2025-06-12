@@ -39,6 +39,18 @@ class TableController(val view: ITableView) {
         })
     }
 
+    fun getAllTableByStatusTrong(){
+        repository.getAllTableByStatusTrong(object : BaseRepository.ListCallback<Table>{
+            override fun onSuccess(dataList: List<Table>) {
+                view.onTableDataListLoaded(dataList)
+            }
+
+            override fun onFailure(error: String) {
+                view.onTableActionError(error)
+            }
+        })
+    }
+
     fun add(data: Table){
         repository.add(data, object : BaseRepository.ActionCallback{
             override fun onSuccess() {
@@ -67,6 +79,29 @@ class TableController(val view: ITableView) {
         repository.delete(id, object : BaseRepository.ActionCallback{
             override fun onSuccess() {
                 view.onTableActionSuccess("Xóa thành công")
+            }
+
+            override fun onFailure(error: String) {
+                view.onTableActionError(error)
+            }
+        })
+    }
+
+    fun getByTableAreaAndStatus(tableAreaId : String,status: String){
+        repository.getByTableAreaAndStatus(tableAreaId, status,object : BaseRepository.ListCallback<Table>{
+            override fun onSuccess(dataList: List<Table>) {
+                view.onTableDataListLoaded(dataList)
+            }
+
+            override fun onFailure(error: String) {
+                view.onTableActionError(error)
+            }
+        })
+    }
+    fun changeStatus (id: String, status: String){
+        repository.changeStatus(id, status, object : BaseRepository.ActionCallback{
+            override fun onSuccess() {
+                view.onTableActionSuccess("Success")
             }
 
             override fun onFailure(error: String) {

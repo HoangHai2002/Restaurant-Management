@@ -6,6 +6,9 @@
     <color name="blue2">#2891E6</color>
     <color name="gray">#F2F1F1</color>
     <color name="textgray">#616161</color>
+    <color name="textblue">#2570DC</color>
     <color name="active">#1FE927</color>
     <color name="inactive">#DE0F0F</color>
+    <color name="textgrey">#6F6F6F</color>
+    <color name="backgroundTableMain">#CAE1FF</color>
 </resources>

@@ -102,13 +102,15 @@ class UserManagementActivity : AppCompatActivity(),IUserView {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                var keyword = p0.toString().trim().lowercase()
+                val keyword = p0.toString().trim().lowercase()
+                if (keyword == ""){
+                    controller.getAll()
+                }
                 val sortedList = listUser.sortedWith(compareByDescending<User>{
                     it.fullName?.lowercase()?.startsWith(keyword) == true
                 }.thenByDescending {
                     it.fullName?.lowercase()?.contains(keyword) == true
                 })
-
                 listUser.clear()
                 listUser.addAll(sortedList)
                 adapter.notifyDataSetChanged()
@@ -135,9 +137,9 @@ class UserManagementActivity : AppCompatActivity(),IUserView {
     }
 
     override fun onUserDataLoaded(data: User?) {
-        TODO("Not yet implemented")
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onUserDataListLoaded(dataList: List<User>) {
         listUser.clear()
         listUser.addAll(dataList)
